@@ -1,14 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Italiana, Lexend } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
+import NavBar from "@/components/navbar";
+import Footer from "@/components/footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
+const italiana = Italiana({ weight: "400", variable: "--font-italiana" })
 
-const fontMono = Geist_Mono({
+const lexend = Lexend({
   subsets: ["latin"],
-  variable: "--font-mono",
+  weight: "400",
+  variable: "--font-lexend"
 })
 
 export default function RootLayout({
@@ -20,10 +23,19 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
+      className={cn("lexend", lexend.className, "italiana", italiana.className)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+          <NavBar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
