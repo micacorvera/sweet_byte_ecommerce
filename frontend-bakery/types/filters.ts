@@ -8,6 +8,7 @@ export type ResultFilterTypes = {
     schema: {
         attributes: {
             taste: {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 enum: any;
             }
         }
